@@ -1153,6 +1153,7 @@ border: 1px solid #CE1139;
     list-style: none;
     text-align: right;
     margin: 0 auto;
+    
 }
 .footer_wrapper .social_links{
     text-align: left;
@@ -2375,4 +2376,6 @@ display:none;
 }
 .rt-box {/* float: left; *//* width: 88%; */text-align: left;margin-left: 10px;margin-bottom: 25px;text-align: center;}
 img.img.img-circle.lt-box {/* float: left; */width: 64px;height: auto;}
+
+
 
