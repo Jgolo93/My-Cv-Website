@@ -19,9 +19,9 @@ app.config['MAIL_DEFAULT_SENDER'] = 'your_email@gmail.com'
 
 mail = Mail(app)
 
-@app.route('/')
+'''@app.route('/')
 def index():
-    return render_template('index.html')  # Your HTML file
+    return render_template('index.html')  # Your HTML file'''
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
