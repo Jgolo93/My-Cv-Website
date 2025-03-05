@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from flask import Flask, request, render_template, jsonify
 from flask_mail import Mail, Message
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request
 
 app = Flask(__name__)
 
@@ -45,23 +45,6 @@ def send_email():
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)})
 
-    
-
-'''@app.route('/send_email', methods=['POST'])
-def send_email_route():
-    try:
-        # Assuming you already have the send_email function, call it here
-        send_email(request.form['email'], request.form['name'], request.form['message'])
-        
-        # If email is sent successfully, flash a success message
-        flash('Your email was sent successfully!', 'success')
-        
-    except Exception as e:
-        # If something goes wrong, flash an error message
-        flash('There was an error sending your email. Please try again.', 'error')
-    
-    # Redirect to the same page to display the flash message
-    return redirect(url_for('index'))  # Or use your specific route name here'''
 
 if __name__ == "__main__":
     app.run()
