@@ -63,7 +63,8 @@ def send_email_route():
     # Redirect to the same page to display the flash message
     return redirect(url_for('index'))  # Or use your specific route name here'''
 
-
+def handler(req, res):
+    return app(req, res)
 
 
 
