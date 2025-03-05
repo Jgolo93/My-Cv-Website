@@ -1,27 +1,22 @@
-from flask import Flask, render_template
-from flask import Flask, request, render_template, jsonify
+import os
+from flask import Flask, render_template, request, jsonify
 from flask_mail import Mail, Message
-from flask import render_template, request
 
 app = Flask(__name__)
 
-'''@app.route("/")
-def home():
-    return render_template("index.html")'''
-
-# Configure Flask-Mail with your email settings
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Replace with your email provider's SMTP server
+# Configure Flask-Mail using environment variables
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'jason.goliath.1992@gmail.com'  # Replace with your email
-app.config['MAIL_PASSWORD'] = 'fpcxrmsyhhyajbbd'  # Replace with your email password
-app.config['MAIL_DEFAULT_SENDER'] = 'your_email@gmail.com'
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')  # Use environment variable
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')  # Use environment variable
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_USERNAME')  # Use same as MAIL_USERNAME
 
 mail = Mail(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')  # Your HTML file
+    return render_template('index.html')
 
 @app.route('/send_email', methods=['POST'])
 def send_email():
@@ -30,24 +25,17 @@ def send_email():
         email = request.form['email']
         message_body = request.form['message']
 
-
-        # Construct email
         msg = Message("New Contact Form Submission",
                       sender=email,
-                      recipients=['jason.goliath.1992@gmail.com'])  # Replace with recipient email
+                      recipients=[os.getenv('MAIL_RECIPIENT')])  # Use environment variable
 
         msg.body = f"Name: {name}\nEmail: {email}\nMessage:\n{message_body}"
-        
         mail.send(msg)
 
         return jsonify({'success': True, 'message': 'Email sent successfully!'})
-    
+
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)})
 
-
 if __name__ == "__main__":
     app.run()
-
-
-
