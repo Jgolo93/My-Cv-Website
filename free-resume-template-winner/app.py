@@ -30,6 +30,7 @@ def send_email():
         email = request.form['email']
         message_body = request.form['message']
 
+
         # Construct email
         msg = Message("New Contact Form Submission",
                       sender=email,
@@ -43,7 +44,7 @@ def send_email():
     
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)})
-    
+
     
 
 '''@app.route('/send_email', methods=['POST'])
