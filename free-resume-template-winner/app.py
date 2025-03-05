@@ -65,6 +65,5 @@ def send_email_route():
 
 
 
-if __name__ == '__main__':
-    app.run()
+
 
