@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     return render_template("index.html")"""
 
-# Configure Flask-Mail with your email settings
+'''# Configure Flask-Mail with your email settings
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Replace with your email provider's SMTP server
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -42,7 +42,7 @@ def send_email():
         return jsonify({'success': True, 'message': 'Email sent successfully!'})
     
     except Exception as e:
-        return jsonify({'success': False, 'message': str(e)})
+        return jsonify({'success': False, 'message': str(e)})'''
 
 
 if __name__ == "__main__":
