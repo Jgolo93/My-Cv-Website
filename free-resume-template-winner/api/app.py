@@ -6,9 +6,9 @@ from flask_mail import Mail, Message
 
 app = Flask(__name__)
 
-"""@app.route("/")
+@app.route("/")
 def home():
-    return render_template("index.html")"""
+    return render_template("index.html")
 
 '''# Configure Flask-Mail with your email settings
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Replace with your email provider's SMTP server
@@ -48,7 +48,7 @@ def send_email():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
 
 
 
